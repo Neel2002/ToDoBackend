@@ -18,7 +18,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://localhost:3100",
+      "*",
+      "http://localhost:3000",
     ],
   })
 );
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //--------------------connecting with mongoDB--------------------//
 
-const URL = "mongodb://127.0.0.1:27017/lab9";
+const URL = "mongodb://127.0.0.1:27017/neelLab9";
 mongoose.set('strictQuery', false);
 mongoose.connect(URL)
 .then(()=>{

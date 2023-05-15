@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 
 const createJWT = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET_KEY);
+    return jwt.sign({ id }, "adhinvoiu4yei5v87nwa7rni");
 };
 
 const filterDeleted = (tasks)=>{
@@ -98,9 +98,10 @@ module.exports.change_status_post = async (req,res)=>{
 
 //delete any tazsk
 module.exports.delete_task_post = async (req,res)=>{
+    console.log(req.body);
     const user = await User.findById(res.user.id);
     user.tasks.map(task=>{
-        if(task.id != req.body.task_id){
+        if(task.id == req.body.task_id){
             task.is_deleted = true;
             return;
         }
